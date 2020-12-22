@@ -18,7 +18,7 @@ export class ApiService {
       params: {
        f: 'json',
        objectIds: '68',
-       outFields: 'season_start_date,season_end_date,ENTEROCOCC_RESULTS_MAX,ENTEROCOCC_DATE,blue_flag'
+       outFields: 'season_start_date,season_end_date,ENTEROCOCC_RESULTS_MAX,ENTEROCOCC_DATE,blue_flag,FEACAL_COLIFORM_RESULTS_MAX,FEACAL_COLIFORM_DATE'
       },
 
       headers: {

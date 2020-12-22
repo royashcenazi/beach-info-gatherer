@@ -11,7 +11,9 @@ class BeachInfo {
   constructor(
     public ENTEROCOCC_DATE: Date,
     public ENTEROCOCC_RESULTS_MAX: string,
-    public blue_flag: string
+    public blue_flag: string,
+    public FEACAL_COLIFORM_DATE: Date,
+    public FEACAL_COLIFORM_RESULTS_MAX: string
   ) {}
 }
 
@@ -48,12 +50,14 @@ export class AppComponent  {
 
           var entrococDate = new Date(0); 
           entrococDate.setUTCMilliseconds(attributes.ENTEROCOCC_DATE);
+
+          var fecalDate = new Date(0); 
+          fecalDate.setUTCMilliseconds(attributes.FEACAL_COLIFORM_DATE);
           
           this.gordonB = new BeachInfo(entrococDate,
           attributes.ENTEROCOCC_RESULTS_MAX, 
-          attributes.blue_flag)
+          attributes.blue_flag, fecalDate, attributes.FEACAL_COLIFORM_RESULTS_MAX)
         }
-
-        )
+      )
  }
 }
