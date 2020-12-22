@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { ApiService } from './service/apis.service';
 
 @Component({
   selector: 'my-app',
@@ -6,5 +7,6 @@ import { Component, VERSION } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Angular ' + VERSION.major;
+  constructor(public apiService: ApiService) { }
+  name = this.apiService.getGordonBeach()
 }
