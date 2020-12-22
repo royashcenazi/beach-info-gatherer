@@ -37,5 +37,6 @@ export class ApiService {
 
 public getSomeApi(): Observable<any> {
   return this.http.get("https://api.mocki.io/v1/ee827d48")
+  var a = "https://www.windalert.co.il/WForecast/LoadWaveStatistics?stationId=51"
   }
 }
