@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, pipe } from "rxjs";
+import { map } from 'rxjs/operators';
+
+
 
 @Injectable()
 export class ApiService {
@@ -14,10 +17,8 @@ export class ApiService {
     return this.http.get(path, {
       params: {
        f: 'json',
-       spatialRel: 'esriSpatialRelIntersects',
-       maxAllowableOffset: '0.01866138385297604',
        objectIds: '68',
-       outSR: '102100'
+       outFields: 'season_start_date,season_end_date,ENTEROCOCC_RESULTS_MAX,ENTEROCOCC_DATE,blue_flag'
       },
 
       headers: {
@@ -26,5 +27,11 @@ export class ApiService {
       }
 
     });
+
+  }
+
+
+public getSomeApi(): Observable<any> {
+  return this.http.get("https://api.mocki.io/v1/ee827d48")
   }
 }
