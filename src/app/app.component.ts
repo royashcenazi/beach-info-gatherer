@@ -9,7 +9,9 @@ class testApi {
 
 class BeachInfo {
   constructor(
-    public fecalEntracock: string,
+    public ENTEROCOCC_DATE: Date,
+    public ENTEROCOCC_RESULTS_MAX: string,
+    public blue_flag: string
   ) {}
 }
 
@@ -37,8 +39,21 @@ export class AppComponent  {
 
         this.apiService.getGordonBeach().subscribe(
           (data: any) =>{
-          this.gordon = JSON.stringify(data)
-          }
+            
+          let attributes = data.features[0].attributes
+
+          this.gordon = JSON.stringify(
+            data.features[0].attributes
+          )
+
+          var entrococDate = new Date(0); 
+          entrococDate.setUTCMilliseconds(attributes.ENTEROCOCC_DATE);
+          
+          this.gordonB = new BeachInfo(entrococDate,
+          attributes.ENTEROCOCC_RESULTS_MAX, 
+          attributes.blue_flag)
+        }
+
         )
  }
 }
