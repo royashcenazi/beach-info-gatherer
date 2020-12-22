@@ -7,6 +7,12 @@ import { ApiService } from './service/apis.service';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  constructor(public apiService: ApiService) { }
-  name = this.apiService.getGordonBeach()
+  constructor(private apiService: ApiService) {  }
+  public rep: JSON;
+
+ ngOnInit() {
+      this.apiService.getGordonBeach().subscribe((data: any)=>{
+      this.rep = data 
+    })
+ }
 }
