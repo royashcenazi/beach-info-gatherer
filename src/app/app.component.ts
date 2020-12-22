@@ -33,13 +33,15 @@ export class AppComponent  {
 
   public gordonB: BeachInfo
 
+  public taWeather: string
+
  ngOnInit() {
       this.apiService.getSomeApi().subscribe(
         (data: any) => 
         this.rep = data
         )
 
-        this.apiService.getGordonBeach().subscribe(
+        this.apiService.getGordonBeachPullotion().subscribe(
           (data: any) =>{
             
           let attributes = data.features[0].attributes
@@ -59,5 +61,12 @@ export class AppComponent  {
           attributes.blue_flag, fecalDate, attributes.FEACAL_COLIFORM_RESULTS_MAX)
         }
       )
+
+      this.apiService.getTelAvivBeachWaves().subscribe(
+        (data: any) => {
+          this.taWeather = JSON.stringify(data)
+        }
+      )
+
  }
 }

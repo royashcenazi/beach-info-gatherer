@@ -11,7 +11,7 @@ export class ApiService {
   constructor(public http: HttpClient) { }
 
 
-  public getGordonBeach(): Observable<any> {
+  public getGordonBeachPullotion(): Observable<any> {
     let path = 'https://gis.health.gov.il/arcgis/rest/services/EnvHealth/ENV_Beaches_Results_Pro2/MapServer/0/query'
 
     return this.http.get(path, {
@@ -28,6 +28,10 @@ export class ApiService {
 
     });
 
+  }
+
+  public getTelAvivBeachWaves(): Observable<any> {
+    return this.http.get("https://www.windalert.co.il/WForecast/LoadWaveStatistics?stationId=51")
   }
 
 
