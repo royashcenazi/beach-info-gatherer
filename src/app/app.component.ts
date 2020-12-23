@@ -81,7 +81,6 @@ export class AppComponent  {
              maxHeight = Math.max(maxHeight, wavesArray[i].max, wavesArray[i].height)
           }
           this.taWeather = JSON.stringify(wavesArray)
-
           this.waveInfo = new WaveHeight(minHeight, maxHeight)
         }
       )
