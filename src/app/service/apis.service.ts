@@ -31,12 +31,11 @@ export class ApiService {
   }
 
   public getTelAvivBeachWaves(): Observable<any> {
-    return this.http.get("https://www.windalert.co.il/WForecast/LoadWaveStatistics?stationId=51")
+    return this.http.get("https://cors-anywhere.herokuapp.com/https://www.windalert.co.il/WForecast/LoadWaveStatistics?stationId=51")
   }
 
 
 public getSomeApi(): Observable<any> {
   return this.http.get("https://api.mocki.io/v1/ee827d48")
-  var a = "https://www.windalert.co.il/WForecast/LoadWaveStatistics?stationId=51"
   }
 }
