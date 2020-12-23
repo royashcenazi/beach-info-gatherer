@@ -17,6 +17,13 @@ class BeachInfo {
   ) {}
 }
 
+class WaveHeight {
+  constructor(
+    public minHeight: number,
+    public maxHeight: number
+  ){}
+}
+
 
 @Component({
   selector: 'my-app',
@@ -34,6 +41,8 @@ export class AppComponent  {
   public gordonB: BeachInfo
 
   public taWeather: string
+
+  public waveInfo: WaveHeight
 
  ngOnInit() {
       this.apiService.getSomeApi().subscribe(
@@ -64,7 +73,16 @@ export class AppComponent  {
 
       this.apiService.getTelAvivBeachWaves().subscribe(
         (data: any) => {
-          this.taWeather = JSON.stringify(data)
+          var wavesArray = data.waveData
+          var minHeight = wavesArray[0].min
+          var maxHeight = wavesArray[0].max
+          for (let i = 0; i < 8; i++) {
+             minHeight = Math.min(minHeight, wavesArray[i].min)
+             maxHeight = Math.max(maxHeight, wavesArray[i].max, wavesArray[i].height)
+          }
+          this.taWeather = JSON.stringify(wavesArray)
+
+          this.waveInfo = new WaveHeight(minHeight, maxHeight)
         }
       )
 
